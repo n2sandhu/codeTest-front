@@ -1,6 +1,41 @@
 <div class="jumbotron">
   <h1>Hello !</h1>
-  <div my-customer></div>
-  <p class="lead">This is just an example application with Angular.js sugar added.</p>
-  <p><a class="btn btn-lg btn-success" bg-change role="button">Click me !</a></p>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Username</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--<tr ng-repeat="(key, value) in employeesData | groupBy: 'manager.name'">-->
+      <!--<th scope="row">{{key}}</th>-->
+      <!--<td ng-repeat="employee in value">{{employee.name}}</td>-->
+    <!--</tr>-->
+
+    <tr ng-repeat="employee in employeesData[1].employees track by employee.id">
+      <!--<tr ng-repeat="employee in employeesData track by index">-->
+      <td><strong>{{employeesData[1].name}}</strong></td>
+      <!--<td><span ng-if="employee.id"></span></td>-->
+      <td></td>
+      <td></td>
+    <!--</tr>-->
+    </tr>
+
+    <!--<tr ng-repeat="employee in employeesData">-->
+      <!--<td><strong ng-if="!employee.managerId">{{employee.id}}</strong></td>-->
+      <!--<td></td>-->
+      <!--<td></td>-->
+    <!--</tr>-->
+
+    <!--{{employeesData}}-->
+
+    <!--<tr ng-if="managerData.length" ng-repeat="manager in managerData track by index">-->
+      <!--<th scope="row">{{index}}</th>-->
+      <!--&lt;!&ndash;<td ng-repeat="employee in value track by employee.name">{{employee.name}}</td>&ndash;&gt;-->
+    <!--</tr>-->
+
+    </tbody>
+  </table>
 </div>
