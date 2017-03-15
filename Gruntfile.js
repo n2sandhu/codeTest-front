@@ -30,25 +30,7 @@ module.exports = function(grunt) {
           livereload: {
             port: 9000
           }
-        },
-      },
-      directives: {
-        files: ['js/src/directives/*.js'],
-        tasks: ['concat:directives'],
-        options: {
-          livereload: {
-            port: 9000
-          }
-        },
-      },
-      services: {
-        files: ['js/src/services/*.js'],
-        tasks: ['concat:services'],
-        options: {
-          livereload: {
-            port: 9000
-          }
-        },
+        }
       },
       controllers: {
         files: ['js/src/controllers/*.js'],
@@ -57,24 +39,15 @@ module.exports = function(grunt) {
           livereload: {
             port: 9000
           }
-        },
-      },
-      filters: {
-        files: ['js/src/filters/*.js'],
-        tasks: ['concat:filters'],
-        options: {
-          livereload: {
-            port: 9000
-          }
-        },
+        }
       },
       html: {
-        files: ['*.html', 'views/**/*.html', ],
+        files: ['*.html', 'views/**/*.html' ],
         options: {
           livereload: {
             port: 9000
           }
-        },
+        }
       }
     },
 
@@ -105,14 +78,14 @@ module.exports = function(grunt) {
           paths: ['styles/less/*/']
         },
         files: {
-          'styles/css/styles.css': 'styles/less/styles.less',
+          'styles/css/styles.css': 'styles/less/styles.less'
         }
       }
     },
 
     concat: {
       options: {
-        separator: ';',
+        separator: ';'
       },
       libs: {
         src: [
@@ -121,30 +94,15 @@ module.exports = function(grunt) {
         ],
         dest: 'js/build/libs.js'
       },
-      directives: {
-        src: ['js/src/directives/*.js', 'js/src/directives/*/*.js'],
-        dest: 'js/build/directives.js'
-      },
       controllers: {
         src: ['js/src/controllers/*.js', 'js/src/controllers/*/*.js'],
         dest: 'js/build/controllers.js'
-      },
-      services: {
-        src: ['js/src/services/*.js', 'js/src/services/*/*.js'],
-        dest: 'js/build/services.js'
-      },
-      filters: {
-        src: ['js/src/filters/*.js', 'js/src/filters/*/*.js'],
-        dest: 'js/build/filters.js'
       },
       build: {
         src: [
           'js/src/app.js',
           'js/src/lb-services.js',
-          'js/build/controllers.js',
-          'js/build/directives.js',
-          'js/build/filters.js',
-          'js/build/services.js'
+          'js/build/controllers.js'
         ],
         dest: 'js/build/app.min.js'
       }
@@ -183,7 +141,7 @@ module.exports = function(grunt) {
           create: ['js/build']
         }
       }
-    },
+    }
 
   });
 
@@ -194,13 +152,9 @@ module.exports = function(grunt) {
       'bower:install',
       'less',
       'concat:libs',
-      'concat:directives',
       'concat:controllers',
-      'concat:services',
-      'concat:filters',
       'concat:build',
-      'uglify:build',
-      // 'coveralls'
+      'uglify:build'
     ]);
   });
 
@@ -210,10 +164,7 @@ module.exports = function(grunt) {
       'mkdir:js',
       'bower:install',
       'concat:libs',
-      'concat:directives',
       'concat:controllers',
-      'concat:services',
-      'concat:filters',
       'less',
       'connect:server',
       'watch'

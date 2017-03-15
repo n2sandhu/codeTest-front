@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('mainController', ['$scope', 'DataService', 'Employee', function($scope, DataService, Employee) {
+app.controller('mainController', ['$scope', 'Employee', function($scope, Employee) {
 
   $scope.managerData = [];
 
@@ -18,12 +18,6 @@ app.controller('mainController', ['$scope', 'DataService', 'Employee', function(
           arrangeData(employees, $scope.managerData[employee.id], employee, function (completed) {
               if(completed == true && index == employees.length - 1) {
                   // console.log('managerArray', $scope.managerData);
-
-                  // $scope.employeesData.forEach(function(empy, ind) {
-                  //     if( empy.managerId) {
-                  //         delete $scope.employeesData[ind];
-                  //     }
-                  // });
                   // console.log($scope.employeesData);
                   var result = [];
                   $scope.employeesData.forEach(function(emp) {
@@ -38,7 +32,6 @@ app.controller('mainController', ['$scope', 'DataService', 'Employee', function(
                         });
                     }
                   });
-                  console.table(result);
                   $scope.results = result;
               }
           });
