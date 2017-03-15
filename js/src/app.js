@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('app', ['ngRoute', 'ngResource', 'lbServices', 'angular.filter']);
+var app = angular.module('app', ['ngRoute', 'ngResource', 'lbServices']);
 
 app
     .config(['$routeProvider',

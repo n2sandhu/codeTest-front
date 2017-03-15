@@ -17,28 +17,29 @@ app.controller('mainController', ['$scope', 'DataService', 'Employee', function(
           $scope.managerData[employee.id] = [];
           arrangeData(employees, $scope.managerData[employee.id], employee, function (completed) {
               if(completed == true && index == employees.length - 1) {
-                  //arrangeData2($scope.managerData);
-                  console.log('managerArray', $scope.managerData);
+                  // console.log('managerArray', $scope.managerData);
 
-
-                  $scope.employeesData.forEach(function(empy, ind) {
-                      if( empy.managerId) {
-                          delete $scope.employeesData[ind];
-                      }
-                      else {
-                          empy.position = 2;
-                          empy.employees.forEach(function(e) {
-                              if(e.isManager == true) {
-                                  var manager = e;
-                                  while(manager != null) {
-
-                                  }
-                              }
-                          });
-
-                      }
+                  // $scope.employeesData.forEach(function(empy, ind) {
+                  //     if( empy.managerId) {
+                  //         delete $scope.employeesData[ind];
+                  //     }
+                  // });
+                  // console.log($scope.employeesData);
+                  var result = [];
+                  $scope.employeesData.forEach(function(emp) {
+                    if(!emp.managerId) {
+                        result.push({manager: emp.name});
+                        var level1Employees = emp.employees;
+                        level1Employees.forEach(function(level1Employee) {
+                            result.push({'empLevel1': level1Employee.name});
+                            level1Employee.employees.forEach(function(level2Employee) {
+                                result.push({'empLevel2': level2Employee.name});
+                            });
+                        });
+                    }
                   });
-                  console.log('employeesArray', $scope.employeesData);
+                  console.table(result);
+                  $scope.results = result;
               }
           });
       });
@@ -47,53 +48,14 @@ app.controller('mainController', ['$scope', 'DataService', 'Employee', function(
   var arrangeData = function(employees, managerArray, employee, cb) {
       employees.forEach(function(emp, index) {
           if(emp.managerId == employee.id) {
-              employee.isManager = true;
               managerArray.push(emp);
+              // console.log('managerArray on employee:', employee.id, ' ', managerArray);
           }
           if (index == employees.length - 1) {
               employee.employees = managerArray;
-              if(managerArray.length == 0) {
-                  employee.isManager = false;
-              }
               cb(true);
           }
       });
   };
-    /*
-  var arrangeData2 = function (managerArray) {
-      managerArray.forEach(function(managerData, index) {
-         console.log('ind', index);
-         managerData.forEach(function(employee) {
-            if( employee.id) {
-
-            }
-         });
-      });
-  };
-*/
-
-    // Employee.find({
-    //     filter: {
-    //         include: ['manager']
-    //     }
-    // })
-    //     .$promise
-    //     .then(function(employees) {
-    //         $scope.employeesData = employees;
-    //         $scope.managerHierarcy = [];
-    //         employees.forEach(function(employee, index) {
-    //             if(!employee.managerId) {
-    //                 $scope.managerHierarcy[employee.id] = [];
-    //                 employees.forEach(function(emp, index) {
-    //                     if(emp.managerId == employee.id) {
-    //                         $scope.managerHierarcy[employee.id].push(emp);
-    //                     }
-    //                 });
-    //             }
-    //             else {
-    //
-    //             }
-    //         });
-    //     });
 
 }]);

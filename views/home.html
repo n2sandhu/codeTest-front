@@ -1,41 +1,18 @@
 <div class="jumbotron">
-  <h1>Hello !</h1>
   <table class="table">
     <thead>
     <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
+      <th class="text-center">CEO</th>
+      <th class="text-center">Employee Level 1</th>
+      <th class="text-center">Employee Level 2</th>
     </tr>
     </thead>
     <tbody>
-    <!--<tr ng-repeat="(key, value) in employeesData | groupBy: 'manager.name'">-->
-      <!--<th scope="row">{{key}}</th>-->
-      <!--<td ng-repeat="employee in value">{{employee.name}}</td>-->
-    <!--</tr>-->
-
-    <tr ng-repeat="employee in employeesData[1].employees track by employee.id">
-      <!--<tr ng-repeat="employee in employeesData track by index">-->
-      <td><strong>{{employeesData[1].name}}</strong></td>
-      <!--<td><span ng-if="employee.id"></span></td>-->
-      <td></td>
-      <td></td>
-    <!--</tr>-->
-    </tr>
-
-    <!--<tr ng-repeat="employee in employeesData">-->
-      <!--<td><strong ng-if="!employee.managerId">{{employee.id}}</strong></td>-->
-      <!--<td></td>-->
-      <!--<td></td>-->
-    <!--</tr>-->
-
-    <!--{{employeesData}}-->
-
-    <!--<tr ng-if="managerData.length" ng-repeat="manager in managerData track by index">-->
-      <!--<th scope="row">{{index}}</th>-->
-      <!--&lt;!&ndash;<td ng-repeat="employee in value track by employee.name">{{employee.name}}</td>&ndash;&gt;-->
-    <!--</tr>-->
-
+      <tr ng-repeat="employee in results">
+        <td class="text-center"><strong>{{employee.manager}}</strong></td>
+        <td class="text-center">{{employee.empLevel1}}</td>
+        <td class="text-center">{{employee.empLevel2}}</td>
+      </tr>
     </tbody>
   </table>
 </div>
