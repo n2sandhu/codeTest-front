@@ -1,11 +1,10 @@
 ## Install dependencies:
 
-```npm install
+```
+npm install
 bower install
 ```
-## Browse the project 
-```grunt serve
-```
+
 ## Installing
 ```js
 npm install -g grunt-cli bower
