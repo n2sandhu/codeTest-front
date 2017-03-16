@@ -1,9 +1,11 @@
-# grunt-angular-boilerplate [![Build Status](https://travis-ci.org/padsbanger/grunt-angular-boilerplate.svg?branch=master)](https://travis-ci.org/padsbanger/grunt-angular-boilerplate) [![Coverage Status](https://img.shields.io/coveralls/padsbanger/grunt-angular-boilerplate.svg)](https://coveralls.io/r/padsbanger/grunt-angular-boilerplate)
+## Install dependencies:
 
-My boilerplate Angular.js application using Grunt.js as task runner.
-
-Front-End dependencies handled by Bower, unit tests run by Karma & Jasmine.
-
+```npm install
+bower install
+```
+## Browse the project 
+```grunt serve
+```
 ## Installing
 ```js
 npm install -g grunt-cli bower
@@ -17,11 +19,6 @@ grunt serve
 ## Building for production
 ```js
 grunt build
-```
-
-## Running tests
-```js
-grunt karma:unit
 ```
 
 ## Project structure
@@ -38,7 +35,6 @@ We have few importants  folder to mention, and they shouldnt be moved unless nec
 4. styles - place for styles
   * less - all less files that are going to be proccessed by GruntJS goes here
   * css - files created by GruntJS
-5. test - contains unit tests
 
 ## GruntJS tasks
 
@@ -53,7 +49,7 @@ grunt serve
 thats whats happening under the hood:
 
 1. Grunt calls Bower and download all javascript libraries to the libs/vendor directory
-2. Grunt takes all developer written javascript files from js directory, creates directives.js, controllers.js etc and puts them inside the js/build folder
+2. Grunt takes all developer written javascript files from js directory, creates controllers.js etc and puts them inside the js/build folder
 3. Grunt compiles less files inside the styles/less directory and outputs css file to styles/css
 4. Grunt launches web browser with application deployed on Connect.js
 5. Grunt goes into background mode, listens for any changes made in the code by developer, rebuild the application, and refreshes active browser window
@@ -62,17 +58,3 @@ thats whats happening under the hood:
 grunt build
 ```
 
-Prepares application for deployment, by cleaning up directories, installing necesary libraries, running unit tests.
-
- ```js
-grunt karma:unit
-```
-
-Performs karma unit tests for UI.
-
-Smaller tasks that do cool thinks:
-
-1. clean - removes cache directories
-2. bower:install - launches Bower automatically, so you don`t need to (smile)
-3. concat - merges all files and compress them
-4. less  - compiles LESS into css
