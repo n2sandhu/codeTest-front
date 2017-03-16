@@ -22,7 +22,7 @@ grunt build
 
 ## System Assumptions
 
-1. There are only two employee levels in organisation setup.
+1. There are only three employee levels in organisation setup i.e. CEO -> Manager -> Employee
 2. An employee who does not have a valid manager OR an employee with no manager is not a valid employee
 
 ## Project structure
