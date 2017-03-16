@@ -20,6 +20,11 @@ grunt serve
 grunt build
 ```
 
+## System Assumptions
+
+1. There are only two employee levels in organisation setup.
+2. An employee who does not have a valid manager OR an employee with no manager is not a valid employee
+
 ## Project structure
 
 Lets start, by introducing the folder structure of the project.
