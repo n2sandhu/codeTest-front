@@ -14,15 +14,13 @@ app.controller('mainController', ['$scope', 'Employee', function($scope, Employe
       $scope.employeesData = employees;
       employees.forEach(function(employee, index) {
           var employeeId = employee.id;
-          $scope.managerData[employee.id] = [];
-          arrangeData(employees, $scope.managerData[employee.id], employee, function (completed) {
+          $scope.managerData[employeeId] = [];
+          arrangeData(employees, $scope.managerData[employeeId], employee, function (completed) {
               if(completed == true && index == employees.length - 1) {
-                  // console.log('managerArray', $scope.managerData);
-                  // console.log($scope.employeesData);
                   var result = [];
                   $scope.employeesData.forEach(function(emp) {
-                    if(!emp.managerId) {
-                        result.push({manager: emp.name});
+                    if(!emp.managerId && emp.employees.length > 0) {
+                        result.push({CEO: emp.name});
                         var level1Employees = emp.employees;
                         level1Employees.forEach(function(level1Employee) {
                             result.push({'empLevel1': level1Employee.name});
@@ -42,7 +40,6 @@ app.controller('mainController', ['$scope', 'Employee', function($scope, Employe
       employees.forEach(function(emp, index) {
           if(emp.managerId == employee.id) {
               managerArray.push(emp);
-              // console.log('managerArray on employee:', employee.id, ' ', managerArray);
           }
           if (index == employees.length - 1) {
               employee.employees = managerArray;
